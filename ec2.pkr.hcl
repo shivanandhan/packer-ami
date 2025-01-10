@@ -7,7 +7,6 @@ packer {
   }
 }
 
-
 source "amazon-ebs" "ec2" {
   ami_name      = "rhel-golden-image"
   instance_type = "t3.small"
@@ -29,9 +28,11 @@ build {
   sources = [
     "source.amazon-ebs.ec2"
   ]
+
   provisioner "shell" {
     inline = [
-     "sudo labauto ansible"
+      "sudo labauto ansible"
     ]
   }
+
 }
